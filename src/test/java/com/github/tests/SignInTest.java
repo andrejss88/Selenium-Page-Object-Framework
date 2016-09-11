@@ -22,7 +22,7 @@ public class SignInTest {
     }
 
     @Test
-    public void applyAsDeveloper() {
+    public void gotToSignInPage() {
         //Create object of HomePage Class
         HomePage home = new HomePage(driver);
         home.clickOnSignIn();
