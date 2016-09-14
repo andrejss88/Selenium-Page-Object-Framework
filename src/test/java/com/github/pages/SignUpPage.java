@@ -5,19 +5,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SignInPage {
+/**
+ * Created by Andre on 9/14/2016.
+ */
+public class SignUpPage {
+
     @FindBy(tagName = "h1")
     WebElement heading;
-
     private WebDriver driver;
 
-    public SignInPage(WebDriver driver) {
+    public SignUpPage(WebDriver driver) {
         this.driver = driver;
-        //Initialise Elements
         PageFactory.initElements(driver, this);
     }
 
     public boolean isPageOpened() {
-        return heading.getText().contains("Sign in to GitHub");
+        return heading.getText().contains("Join GitHub");
     }
 }
