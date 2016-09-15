@@ -4,6 +4,7 @@ import com.github.pages.HomePage;
 import com.github.pages.SearchPage;
 import com.github.pages.SignInPage;
 import com.github.pages.SignUpPage;
+import com.github.pages.common.CommonHeaderElements;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,7 +18,9 @@ import java.util.concurrent.TimeUnit;
  * Created by Andre on 9/14/2016.
  */
 public class HomePageTest {
+
     WebDriver driver;
+
 
     @Before
     public void setup() {
@@ -25,39 +28,46 @@ public class HomePageTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Test
-    public void goToHomePage() {
-        HomePage home = new HomePage(driver);
-        Assert.assertTrue("Could not assert Home Page opened", home.isPageOpened());
-    }
 
     @Test
     public void checkSignInBtnWorks() {
-        HomePage home = new HomePage(driver);
-        home.clickOnSignIn();
-
+        // Arrange
+        new HomePage(driver, HomePage.PAGE_URL);
+        CommonHeaderElements headerSection = new CommonHeaderElements(driver);
         SignInPage signInPage = new SignInPage(driver);
-        Assert.assertTrue("Could not assert Sign In Page opened", signInPage.isPageOpened());
+
+        //Act
+        headerSection.clickOnHeaderSignIn();
+
+        // Assert
+        Assert.assertTrue("Could not assert Sign In Page opened", signInPage.isPageOpened(SignInPage.HEADING));
 
     }
 
     @Test
     public void checkSignUpBtnWorks() {
-        HomePage home = new HomePage(driver);
-        home.clickOnSignUp();
-
+        // Arrange
+        new HomePage(driver, HomePage.PAGE_URL);
+        CommonHeaderElements headerSection = new CommonHeaderElements(driver);
         SignUpPage signUpPage = new SignUpPage(driver);
-        Assert.assertTrue("Could not assert Sign Up Page opened", signUpPage.isPageOpened());
+
+        // Act
+        headerSection.clickOnHeaderSignUp();
+
+        // Assert
+        Assert.assertTrue("Could not assert Sign Up Page opened", signUpPage.isPageOpened(SignUpPage.HEADING));
 
     }
 
     @Test
     public void checkSearchWorks() {
-        HomePage home = new HomePage(driver);
-        home.search("test repo");
-
+        new HomePage(driver, HomePage.PAGE_URL);
+        CommonHeaderElements headerSection = new CommonHeaderElements(driver);
         SearchPage searchPage = new SearchPage(driver);
-        Assert.assertTrue("Could not assert Search Page opened", searchPage.isPageOpened());
+
+        headerSection.search("test repo");
+
+        Assert.assertTrue("Could not assert Search Page opened", searchPage.isPageOpened(SearchPage.HEADING));
     }
 
     @After

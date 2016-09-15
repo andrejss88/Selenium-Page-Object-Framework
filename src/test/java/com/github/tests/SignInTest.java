@@ -1,7 +1,5 @@
 package com.github.tests;
 
-import com.github.pages.CommonElements;
-import com.github.pages.HomePage;
 import com.github.pages.SignInPage;
 import org.junit.After;
 import org.junit.Assert;
@@ -12,26 +10,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class SignInTest extends CommonElements {
+public class SignInTest  {
     WebDriver driver;
 
     @Before
     public void setup() {
-        //use FF Driver
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
-    public void gotToSignInPage() {
-        //Create object of HomePage Class
-        HomePage home = new HomePage(driver);
-        home.clickOnSignIn();
-        //Create object of SignInPage
-        SignInPage signInPage = new SignInPage(driver);
-
-        //Check if page is opened
-        Assert.assertTrue("Could not assert Sign In Page opened", signInPage.isPageOpened());
+    public void checkSignInLoads(){
+        SignInPage signInPage =  new SignInPage(driver, SignInPage.PAGE_URL);
+        Assert.assertTrue("Could not assert Sign In Page opened", signInPage.isPageOpened(SignInPage.HEADING));
     }
 
 
