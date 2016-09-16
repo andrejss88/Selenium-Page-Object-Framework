@@ -7,7 +7,7 @@ import org.openqa.selenium.support.How;
 
 /**
  */
-public class CommonFooterELements extends AbstractGitHubPage {
+public class CommonFooterElements extends AbstractGitHubPage {
 
     /**
      * Implement footer elements (links) the same way CommonHeaderElements is.
@@ -20,9 +20,6 @@ public class CommonFooterELements extends AbstractGitHubPage {
 
     @FindBy(how = How.LINK_TEXT, using = "About")
     private WebElement aboutLink;
-
-    @FindBy(how = How.CLASS_NAME, using = "octicon-mark-github")
-    private WebElement logoIcon;
 
     /**
      * Demonstration how to grab elements by Xpath

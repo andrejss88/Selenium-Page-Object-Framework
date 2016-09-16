@@ -10,15 +10,29 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends AbstractGitHubPage {
 
     public static String PAGE_URL = BASE_URL ;
-    private static String HEADING = "How people build";
+    public static String HEADING = "How people build";
+
     //Locators unique to Homepage
     @FindBy(how = How.CLASS_NAME, using = "display-heading-1")
     private WebElement heading;
+
+    @FindBy(name = "user[login]")
+    private WebElement usernameField;
+
+    @FindBy(name = "user[email]")
+    private WebElement emailField;
+
+    @FindBy(name = "user[password]")
+    private WebElement passwordField;
+
+    @FindBy(how = How.XPATH, using = "//button[@type='submit']")
+    private WebElement signUpBtn;
 
     /**
      * Instantiate for the purpose of initializing page's elements
      * i.e. when you come from a different page
      */
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -39,5 +53,17 @@ public class HomePage extends AbstractGitHubPage {
     public boolean isPageOpened(String headingText) {
         return heading.getText().contains(headingText);
     }
+
+    public void clickSignIn() {
+        signUpBtn.click();
+    }
+
+    public void signUp(String username, String email, String password) {
+        usernameField.sendKeys(username);
+        emailField.sendKeys(email);
+        passwordField.sendKeys(password);
+        clickSignIn();
+    }
+
 
 }

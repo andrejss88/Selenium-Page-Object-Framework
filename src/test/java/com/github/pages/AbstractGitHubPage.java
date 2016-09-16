@@ -17,7 +17,9 @@ public abstract class AbstractGitHubPage {
     /**
      * Shared between all pages, avoids declaring in each Page Object
      */
+
     protected WebDriver driver;
+
 
     public boolean isPageOpened(String headingText){
         return heading.getText().contains(headingText);

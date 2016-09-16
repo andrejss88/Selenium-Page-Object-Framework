@@ -1,6 +1,5 @@
 package com.github.pages.common;
 
-import com.github.pages.AbstractGitHubPage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,8 +26,11 @@ public class CommonHeaderElements  {
     @FindBy(how = How.LINK_TEXT, using = "Sign up")
     private WebElement signUpBtn;
 
-    @FindBy(how = How.CLASS_NAME, using = "header-search-input")
+    @FindBy(className = "header-search-input")
     private WebElement searchGitHubField;
+
+    @FindBy(how = How.CLASS_NAME, using = "octicon-mark-github")
+    private WebElement logoIcon;
 
 
     public CommonHeaderElements(WebDriver driver) {
@@ -47,5 +49,9 @@ public class CommonHeaderElements  {
     public void search(String searchText) {
         searchGitHubField.sendKeys(searchText);
         searchGitHubField.sendKeys(Keys.RETURN);
+    }
+
+    public void clickLogo() {
+        logoIcon.click();
     }
 }
