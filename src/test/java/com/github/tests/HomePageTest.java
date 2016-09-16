@@ -5,15 +5,14 @@ import com.github.pages.SearchPage;
 import com.github.pages.SignInPage;
 import com.github.pages.SignUpPage;
 import com.github.pages.common.CommonHeaderElements;
+import com.github.setup.SeleniumDriver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Andre on 9/14/2016.
@@ -24,8 +23,7 @@ public class HomePageTest {
 
     @BeforeMethod
     public void setup() {
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver = SeleniumDriver.getDriver();
     }
 
     @Test
