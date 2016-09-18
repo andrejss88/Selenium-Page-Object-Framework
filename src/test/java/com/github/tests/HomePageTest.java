@@ -4,6 +4,7 @@ import com.github.pages.HomePage;
 import com.github.pages.SearchPage;
 import com.github.pages.SignInPage;
 import com.github.pages.SignUpPage;
+import com.github.pages.common.CommonActions;
 import com.github.pages.common.CommonHeaderElements;
 import com.github.setup.SeleniumDriver;
 import org.openqa.selenium.WebDriver;
@@ -73,25 +74,29 @@ public class HomePageTest {
 
         SignUpPage signUpPage = new SignUpPage(driver);
         CommonHeaderElements headerSection = new CommonHeaderElements(driver);
+        CommonActions common = new CommonActions(driver);
 
-        home.signUp("", "email@email.com", "pass");
-        signUpPage.checkSignUpFailed(soft);
+        common.fillInNewUserDetails("", "email@email.com", "pass");
+        home.clickSignIn();
+        signUpPage.softCheckSignUpFailed();
         headerSection.clickLogo();
 
 
-        home.signUp("name", "", "pass");
-        signUpPage.checkSignUpFailed(soft);
+        common.fillInNewUserDetails("name", "", "pass");
+        home.clickSignIn();
+        signUpPage.softCheckSignUpFailed();
         headerSection.clickLogo();
 
-        home.signUp("name", "email", "");
-        signUpPage.checkSignUpFailed(soft);
+        common.fillInNewUserDetails("name", "email", "");
+        home.clickSignIn();
+        signUpPage.softCheckSignUpFailed();
 
         // Will display the same fail assert message 3 times, separated by comma
         soft.assertAll();
     }
 
     @AfterMethod
-    public void close() {
+    public void tearDown() {
         driver.close();
     }
 }

@@ -1,8 +1,8 @@
 package com.github.tests;
 
-import com.github.helpers.ElementUtil;
 import com.github.pages.SignInPage;
 import com.github.setup.SeleniumDriver;
+import com.github.utils.ElementUtil;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -42,7 +42,7 @@ public class SignInPageTest {
 
 
     @AfterMethod
-    public void close() {
+    public void tearDown() {
         driver.close();
     }
 }

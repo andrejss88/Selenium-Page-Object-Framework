@@ -16,14 +16,7 @@ public class HomePage extends AbstractGitHubPage {
     @FindBy(how = How.CLASS_NAME, using = "display-heading-1")
     private WebElement heading;
 
-    @FindBy(name = "user[login]")
-    private WebElement usernameField;
 
-    @FindBy(name = "user[email]")
-    private WebElement emailField;
-
-    @FindBy(name = "user[password]")
-    private WebElement passwordField;
 
     @FindBy(how = How.XPATH, using = "//button[@type='submit']")
     private WebElement signUpBtn;
@@ -50,19 +43,8 @@ public class HomePage extends AbstractGitHubPage {
         Assert.assertTrue("Could not assert Home Page opened", this.isPageOpened(HomePage.HEADING));
     }
 
-    public boolean isPageOpened(String headingText) {
-        return heading.getText().contains(headingText);
-    }
-
     public void clickSignIn() {
         signUpBtn.click();
-    }
-
-    public void signUp(String username, String email, String password) {
-        usernameField.sendKeys(username);
-        emailField.sendKeys(email);
-        passwordField.sendKeys(password);
-        clickSignIn();
     }
 
 

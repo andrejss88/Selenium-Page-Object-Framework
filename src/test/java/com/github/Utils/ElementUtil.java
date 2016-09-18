@@ -1,6 +1,5 @@
-package com.github.helpers;
+package com.github.utils;
 
-import com.github.setup.Logg;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
@@ -14,7 +13,7 @@ public class ElementUtil {
 
 
     public static boolean checkElementIsDisplayed(WebElement element) {
-        Logg.getLog().info("Trying to check that an element is displayed");
+        log.info("Trying to check that an element is displayed");
         try {
             element.isDisplayed();
             log.info("Element is displayed");
