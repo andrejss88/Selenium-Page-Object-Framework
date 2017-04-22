@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends AbstractGitHubPage {
 
     public static String PAGE_URL = BASE_URL ;
-    public static String HEADING = "How people build";
 
     //Locators unique to Homepage
     @FindBy(how = How.CLASS_NAME, using = "display-heading-1")
@@ -40,7 +39,7 @@ public class HomePage extends AbstractGitHubPage {
         this(driver);
         driver.get(pageUrl);
         PageFactory.initElements(driver, this);
-        Assert.assertTrue("Could not assert Home Page opened", this.isPageOpened(HomePage.HEADING));
+        Assert.assertTrue("Could not assert Home Page opened", this.isPageOpened());
     }
 
     public void clickSignIn() {

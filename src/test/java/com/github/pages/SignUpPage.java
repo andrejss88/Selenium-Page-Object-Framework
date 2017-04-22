@@ -17,14 +17,13 @@ public class SignUpPage extends AbstractGitHubPage{
 
 
     public static String HEADING = "Join GitHub";
-    public static String INCORRECT_HEADING = "Joinnn GitHub"; // To show softAsserts (works as 'Verify')
+    public static String INCORRECT_HEADING = "Joinnn GitHub"; // Intentional typo to show softAsserts (works as 'Verify')
 
     @FindBy(className = "flash-error")
     private WebElement errorToolTip;
 
     @FindBy(id = "signup_button")
     private WebElement createAccountBtn;
-
 
 
     public SignUpPage(WebDriver driver) {
@@ -40,7 +39,7 @@ public class SignUpPage extends AbstractGitHubPage{
 
     public void softCheckSignUpFailed() {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(this.isPageOpened(SignUpPage.INCORRECT_HEADING), "Could not assert Sign Up page is opened");
+        softAssert.assertTrue(this.isPageOpened(), "Could not assert Sign Up page is opened");
         softAssert.assertTrue(ElementUtil.checkElementIsDisplayed(errorToolTip), "Could not assert that element: " + errorToolTip + " is displayed");
     }
 

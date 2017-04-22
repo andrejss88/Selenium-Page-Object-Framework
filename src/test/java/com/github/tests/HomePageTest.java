@@ -38,7 +38,7 @@ public class HomePageTest {
         headerSection.clickOnHeaderSignIn();
 
         // Assert
-        Assert.assertTrue(signInPage.isPageOpened(SignInPage.HEADING), "Could not assert Sign In Page opened");
+        Assert.assertTrue(signInPage.isPageOpened(), "Could not assert Sign In Page opened");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class HomePageTest {
         headerSection.clickOnHeaderSignUp();
 
         // Assert
-        Assert.assertTrue(signUpPage.isPageOpened(SignUpPage.HEADING), "Could not assert Sign Up Page opened");
+        Assert.assertTrue(signUpPage.isPageOpened(), "Could not assert Sign Up Page opened");
 
     }
 
@@ -64,7 +64,7 @@ public class HomePageTest {
 
         headerSection.search("test repo");
 
-        Assert.assertTrue(searchPage.isPageOpened(SearchPage.HEADING), "Could not assert Search Page opened");
+        Assert.assertTrue(searchPage.isPageOpened(), "Could not assert Search Page opened");
     }
 
     @Test

@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 public class PricingPage extends AbstractGitHubPage {
 
     public static String PAGE_URL = BASE_URL + "pricing";
-    private static String HEADING = "Priced for everyone";
 
     public PricingPage(WebDriver driver) {
         this.driver = driver;

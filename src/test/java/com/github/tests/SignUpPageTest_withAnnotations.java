@@ -27,7 +27,7 @@ public class SignUpPageTest_withAnnotations {
     @Test(invocationCount = 2)
     public void checkSignUpPageStarts() {
         SignUpPage signInPage = new SignUpPage(driver, SignUpPage.PAGE_URL);
-        Assert.assertTrue(signInPage.isPageOpened(SignUpPage.HEADING), "Could not assert Sign Up Page opened");
+        Assert.assertTrue(signInPage.isPageOpened(), "Could not assert Sign Up Page opened");
     }
 
     // Will run if above passes

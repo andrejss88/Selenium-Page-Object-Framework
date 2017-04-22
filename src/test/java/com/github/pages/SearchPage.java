@@ -1,8 +1,6 @@
 package com.github.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -11,10 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 public class SearchPage extends AbstractGitHubPage{
 
     public static String PAGE_URL = BASE_URL + "search";
-    public static String HEADING = "Search";
-
-    @FindBy(tagName = "h1")
-    WebElement heading;
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;

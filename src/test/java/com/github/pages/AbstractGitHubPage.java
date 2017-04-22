@@ -1,8 +1,6 @@
 package com.github.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 /**
  *
@@ -10,9 +8,7 @@ import org.openqa.selenium.support.FindBy;
 public abstract class AbstractGitHubPage {
 
     protected static String BASE_URL = "https://github.com/";
-
-    @FindBy(tagName = "h1")
-    protected WebElement heading;
+    private static String TITLE = "GitHub";
 
     /**
      * Shared between all pages, avoids declaring in each Page Object
@@ -21,7 +17,7 @@ public abstract class AbstractGitHubPage {
     protected WebDriver driver;
 
 
-    public boolean isPageOpened(String headingText){
-        return heading.getText().contains(headingText);
+    public boolean isPageOpened() {
+        return driver.getTitle().contains(TITLE);
     }
 }

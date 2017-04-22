@@ -28,7 +28,7 @@ public class SignInPage extends AbstractGitHubPage{
         this(driver);
         driver.get(pageUrl);
         PageFactory.initElements(driver, this);
-        Assert.assertTrue("Could not assert Sign In Page was opened", this.isPageOpened(HEADING));
+        Assert.assertTrue("Could not assert Sign In Page was opened", this.isPageOpened());
     }
 
     public WebElement getSignInBtn() {
