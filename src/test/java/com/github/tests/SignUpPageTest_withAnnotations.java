@@ -1,9 +1,9 @@
 package com.github.tests;
 
+import com.fluentselenium.setup.SeleniumDriver;
 import com.github.dataproviders.UserDetailsProvider;
 import com.github.pages.SignUpPage;
 import com.github.pages.common.CommonActions;
-import com.github.setup.SeleniumDriver;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -14,10 +14,14 @@ import org.testng.annotations.Test;
 public class SignUpPageTest_withAnnotations {
 
     WebDriver driver;
+    SignUpPage signUpPage;
+    CommonActions common;
 
     @BeforeMethod
     public void setup() {
         driver = SeleniumDriver.getDriver();
+        signUpPage = new SignUpPage(driver, SignUpPage.PAGE_URL);
+        common = new CommonActions(driver);
     }
 
     /**
@@ -33,9 +37,6 @@ public class SignUpPageTest_withAnnotations {
     // Will run if above passes
     @Test(dependsOnMethods = {"checkSignUpPageStarts"})
     public void signUpStep1() {
-        SignUpPage signUpPage = new SignUpPage(driver, SignUpPage.PAGE_URL);
-        CommonActions common = new CommonActions(driver);
-
         common.fillInNewUserDetails("test", "test", "test");
         signUpPage.clickCreateAccount();
         signUpPage.checkAccountCreationSuccessful();
@@ -49,8 +50,6 @@ public class SignUpPageTest_withAnnotations {
 
     @Test(dataProvider = "dummyUserDetails", dataProviderClass = UserDetailsProvider.class)
     public void signUpStep1_withDataProvider(String userName, String email, String password) {
-        SignUpPage signUpPage = new SignUpPage(driver, SignUpPage.PAGE_URL);
-        CommonActions common = new CommonActions(driver);
 
         common.fillInNewUserDetails(userName, email, password);
 

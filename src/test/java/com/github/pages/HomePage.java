@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+
 public class HomePage extends AbstractGitHubPage {
 
     public static String PAGE_URL = BASE_URL ;
@@ -15,16 +16,22 @@ public class HomePage extends AbstractGitHubPage {
     @FindBy(how = How.CLASS_NAME, using = "display-heading-1")
     private WebElement heading;
 
-
-
     @FindBy(how = How.XPATH, using = "//button[@type='submit']")
     private WebElement signUpBtn;
+
+    @FindBy(name = "user[login]")
+    private WebElement usernameField;
+
+    @FindBy(name = "user[email]")
+    private WebElement emailField;
+
+    @FindBy(name = "user[password]")
+    private WebElement passwordField;
 
     /**
      * Instantiate for the purpose of initializing page's elements
      * i.e. when you come from a different page
      */
-
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -42,9 +49,28 @@ public class HomePage extends AbstractGitHubPage {
         Assert.assertTrue("Could not assert Home Page opened", this.isPageOpened());
     }
 
-    public void clickSignIn() {
+    public void clickSignUp() {
         signUpBtn.click();
     }
 
+
+    /**
+     * Below methods do the same as the method "fillInNewUserDetails"
+     * but using a Builder pattern
+     */
+    public HomePage enterUserName(String username) {
+        usernameField.sendKeys(username);
+        return this;
+    }
+
+    public HomePage enterEmail(String email) {
+        emailField.sendKeys(email);
+        return this;
+    }
+
+    public HomePage enterPassword(String email) {
+        passwordField.sendKeys(email);
+        return this;
+    }
 
 }

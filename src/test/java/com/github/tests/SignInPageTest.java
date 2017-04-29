@@ -1,21 +1,24 @@
 package com.github.tests;
 
+import com.fluentselenium.setup.SeleniumDriver;
 import com.github.pages.SignInPage;
-import com.github.setup.SeleniumDriver;
-import com.github.utils.ElementUtil;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.fluentselenium.utils.ElementUtil.checkElementEnabled;
+
 
 public class SignInPageTest {
     WebDriver driver;
+    SignInPage signInPage;
 
     @BeforeMethod
     public void setup() {
         driver = SeleniumDriver.getDriver();
+        signInPage = new SignInPage(driver, SignInPage.PAGE_URL);
     }
 
     /**
@@ -25,7 +28,6 @@ public class SignInPageTest {
 
     @Test
     public void checkSignBtnEnabled() {
-        SignInPage signInPage =  new SignInPage(driver, SignInPage.PAGE_URL);
         Assert.assertEquals(signInPage.getSignInBtn().isEnabled(), true, "Sign In button is disabled but should be enabled");
     }
 
@@ -36,8 +38,7 @@ public class SignInPageTest {
      */
     @Test
     public void checkSignInBtnEnabled_alternativeWay() {
-        SignInPage signInPage = new SignInPage(driver, SignInPage.PAGE_URL);
-        ElementUtil.checkElementEnabled(signInPage.getSignInBtn(), true);
+        checkElementEnabled(signInPage.getSignInBtn(), true);
     }
 
 
