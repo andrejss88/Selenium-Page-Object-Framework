@@ -59,7 +59,7 @@ public class SearchPage extends AbstractGitHubPage {
         return this;
     }
 
-    public SearchPage selectLanguage(LanguagePanel language) {
+    public SearchPage selectLanguage(Language language) {
         String languageItem = FILTER_ITEM +
                 " and text()[normalize-space() = '" + language + "']]";
 
@@ -110,7 +110,7 @@ public class SearchPage extends AbstractGitHubPage {
         return isSorted;
     }
 
-    public int getRepoCountFor(LanguagePanel language){
+    public int getRepoCountFor(Language language){
         String repoCountXpath = FILTER_ITEM +
                 " and text()[normalize-space() = '" + language + "']]//span";
         String repoCount = driver.findElement(By.xpath(repoCountXpath)).getText();
@@ -125,7 +125,7 @@ public class SearchPage extends AbstractGitHubPage {
         return stringToNumber(repoCount);
     }
 
-    public SearchPage sortBy(SearchOptions option){
+    public SearchPage sortBy(SortOptions option){
 
         sortByBtn.click();
 
@@ -143,8 +143,4 @@ public class SearchPage extends AbstractGitHubPage {
         return this;
     }
 
-
-
-
-    // TODO: Implement table checking on this page (prefixes link)
 }

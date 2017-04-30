@@ -50,10 +50,18 @@
             <version>6.8</version>
         </dependency>
 
+        <!-- Library that contains convenience methods -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
+        </dependency>
+
+        <!-- To provide data to @DataProviders -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.8</version>
         </dependency>
 
 

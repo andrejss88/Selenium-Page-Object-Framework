@@ -1,9 +1,9 @@
 package com.github.tests;
 
 import com.fluentselenium.setup.SeleniumDriver;
-import com.github.pages.searchpage.LanguagePanel;
-import com.github.pages.searchpage.SearchOptions;
+import com.github.pages.searchpage.Language;
 import com.github.pages.searchpage.SearchPage;
+import com.github.pages.searchpage.SortOptions;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.github.pages.searchpage.LabelPredicates.is;
-import static com.github.pages.searchpage.LabelPredicates.isNot;
+import static com.github.pages.searchpage.FilterPredicates.is;
+import static com.github.pages.searchpage.FilterPredicates.isNot;
 import static com.github.pages.searchpage.SearchPage.isSorted;
 
 public class SearchPageTest {
@@ -29,7 +29,7 @@ public class SearchPageTest {
     @Test
     public void checkLanguageFilterWorks() {
 
-        LanguagePanel java = LanguagePanel.JAVA;
+        Language java = Language.JAVA;
 
         search.enterSearchWord(java.toString())
                 .clickSearch()
@@ -37,8 +37,8 @@ public class SearchPageTest {
                 .checkLanguageLabels(is(java));
 
         // Negative test
-        LanguagePanel html = LanguagePanel.HTML;
-        LanguagePanel python = LanguagePanel.PYTHON;
+        Language html = Language.HTML;
+        Language python = Language.PYTHON;
 
         search.selectLanguage(html)
                 .checkLanguageLabels(isNot(python));
@@ -47,7 +47,7 @@ public class SearchPageTest {
     @Test
     public void checkFilterTotalRepoCount(){
 
-        LanguagePanel js = LanguagePanel.JAVASCRIPT;
+        Language js = Language.JAVASCRIPT;
 
         search.enterSearchWord(js.toString())
                 .clickSearch();
@@ -68,7 +68,7 @@ public class SearchPageTest {
 
         List<Double> ratingList = search.enterSearchWord("Java")
                 .clickSearch()
-                .sortBy(SearchOptions.MOST_STARS)
+                .sortBy(SortOptions.MOST_STARS)
                 .getStarRatings();
 
         Assert.assertTrue(isSorted(ratingList));

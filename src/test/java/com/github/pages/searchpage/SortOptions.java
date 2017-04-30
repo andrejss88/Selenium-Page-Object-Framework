@@ -1,15 +1,15 @@
 package com.github.pages.searchpage;
 
-public enum LanguagePanel {
-    JAVA("Java"),
-    HTML("HTML"),
-    PYTHON("Python"),
-    JAVASCRIPT("JavaScript");
+public enum SortOptions {
+    MOST_STARS("Most stars"),
+    FEWEST_STARS("Fewest stars"),
+    MOST_FORKS("Most forks");
+    // etc...
 
 
     private String value;
 
-    LanguagePanel(final String value) {
+    SortOptions(final String value) {
         this.value = value;
     }
 

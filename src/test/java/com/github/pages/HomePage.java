@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class HomePage extends AbstractGitHubPage {
 
     public static String PAGE_URL = BASE_URL ;

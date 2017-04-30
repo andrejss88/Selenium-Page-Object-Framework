@@ -3,8 +3,6 @@ package com.github.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- */
 public class PricingPage extends AbstractGitHubPage {
 
     public static String PAGE_URL = BASE_URL + "pricing";

@@ -1,6 +1,5 @@
 package com.github.pages;
 
-import com.fluentselenium.utils.ElementUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,13 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import static com.fluentselenium.utils.ElementUtil.checkElementIsDisplayed;
+
 public class SignUpPage extends AbstractGitHubPage{
 
     public static String PAGE_URL = BASE_URL + "join";
-
-
-    public static String HEADING = "Join GitHub";
-    public static String INCORRECT_HEADING = "Joinnn GitHub"; // Intentional typo to show softAsserts (works as 'Verify')
 
     @FindBy(className = "flash-error")
     private WebElement errorToolTip;
@@ -37,16 +34,16 @@ public class SignUpPage extends AbstractGitHubPage{
     public void softCheckSignUpFailed() {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(this.isPageOpened(), "Could not assert Sign Up page is opened");
-        softAssert.assertTrue(ElementUtil.checkElementIsDisplayed(errorToolTip), "Could not assert that element: " + errorToolTip + " is displayed");
+        softAssert.assertTrue(checkElementIsDisplayed(errorToolTip), "Could not assert that element: " + errorToolTip + " is displayed");
     }
 
 
     public void checkAccountCreationSuccessful() {
-        Assert.assertFalse(ElementUtil.checkElementIsDisplayed(createAccountBtn), "'Create Account' button should not be visible if account creation was successful");
+        Assert.assertFalse(checkElementIsDisplayed(createAccountBtn), "'Create Account' button should not be visible if account creation was successful");
     }
 
     public void checkAccountCreationFailed() {
-        Assert.assertTrue(ElementUtil.checkElementIsDisplayed(createAccountBtn), "'Create Account' button should remain visible if account creation failed");
+        Assert.assertTrue(checkElementIsDisplayed(createAccountBtn), "'Create Account' button should remain visible if account creation failed");
     }
 
 

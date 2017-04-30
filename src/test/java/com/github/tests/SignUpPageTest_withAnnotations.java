@@ -48,8 +48,17 @@ public class SignUpPageTest_withAnnotations {
         System.out.println("But this will simply not run because signUpStep1 will fail");
     }
 
-    @Test(dataProvider = "dummyUserDetails", dataProviderClass = UserDetailsProvider.class)
+    @Test(dataProvider = "getUserDetails", dataProviderClass = UserDetailsProvider.class)
     public void signUpStep1_withDataProvider(String userName, String email, String password) {
+
+        common.fillInNewUserDetails(userName, email, password);
+
+        signUpPage.clickCreateAccount();
+        signUpPage.checkAccountCreationFailed();
+    }
+
+    @Test(dataProvider = "loginData", dataProviderClass = UserDetailsProvider.class)
+    public void signUpStep1_withCSVDataParse(String userName, String email, String password) {
 
         common.fillInNewUserDetails(userName, email, password);
 

@@ -1,15 +1,19 @@
 package com.github.pages.searchpage;
 
-public enum SearchOptions {
-    MOST_STARS("Most stars"),
-    FEWEST_STARS("Fewest stars"),
-    MOST_FORKS("Most forks");
-    // etc...
+/**
+ * Represents languages shown on the
+ * right side to filter repos
+ */
+public enum Language {
+    JAVA("Java"),
+    HTML("HTML"),
+    PYTHON("Python"),
+    JAVASCRIPT("JavaScript");
 
 
     private String value;
 
-    SearchOptions(final String value) {
+    Language(final String value) {
         this.value = value;
     }
 

@@ -19,7 +19,6 @@ public class SignInPage extends AbstractGitHubPage{
         PageFactory.initElements(driver, this);
     }
 
-
     /**
      * Instantiate when you want to start the test from this page
      * @param pageUrl : use the PAGE_URL of this class

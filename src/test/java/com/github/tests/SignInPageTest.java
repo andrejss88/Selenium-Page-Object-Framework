@@ -12,6 +12,7 @@ import static com.fluentselenium.utils.ElementUtil.checkElementEnabled;
 
 
 public class SignInPageTest {
+
     WebDriver driver;
     SignInPage signInPage;
 
