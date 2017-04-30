@@ -7,6 +7,18 @@
     <groupId>com.andrejss88</groupId>
     <artifactId>seleniumframework</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
 
@@ -15,14 +27,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.0.1</version>
-        </dependency>
-
-        <!-- Testing framework: allows @Test and other annotations -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.8</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- Logging Facade: uses log4j -->
@@ -38,6 +42,8 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.5</version>
         </dependency>
+
+        <!-- Testing framework: allows @Test and other annotations -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

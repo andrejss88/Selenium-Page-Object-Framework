@@ -2,11 +2,11 @@ package com.github.tests;
 
 import com.fluentselenium.setup.SeleniumDriver;
 import com.github.pages.HomePage;
-import com.github.pages.SearchPage;
 import com.github.pages.SignInPage;
 import com.github.pages.SignUpPage;
 import com.github.pages.common.CommonActions;
 import com.github.pages.common.CommonHeaderElements;
+import com.github.pages.searchpage.SearchPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

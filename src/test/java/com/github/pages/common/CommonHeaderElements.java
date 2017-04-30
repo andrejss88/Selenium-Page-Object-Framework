@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by Andre on 9/14/2016.
- */
 public class CommonHeaderElements  {
     private WebDriver driver ;
     /**
