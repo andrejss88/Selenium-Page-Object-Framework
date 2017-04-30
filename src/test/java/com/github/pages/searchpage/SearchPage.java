@@ -1,6 +1,7 @@
 package com.github.pages.searchpage;
 
 import com.github.pages.AbstractGitHubPage;
+import com.google.common.collect.Ordering;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,7 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static com.fluentselenium.utils.ConvertUtil.convertToStrings;
+import static com.fluentselenium.utils.ConvertUtil.*;
 
 public class SearchPage extends AbstractGitHubPage {
 
@@ -31,6 +32,11 @@ public class SearchPage extends AbstractGitHubPage {
 
     @FindBy(how = How.CLASS_NAME, using = "filter-list")
     private WebElement filterList;
+
+    @FindBy(how = How.CLASS_NAME, using = "select-menu-button")
+    private WebElement sortByBtn;
+
+
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
@@ -71,9 +77,9 @@ public class SearchPage extends AbstractGitHubPage {
 
     public SearchPage checkLanguageLabels(Predicate<String> predicate) {
 
-        List<String> langLabels = getLanguageLabels();
+        List<String> labels = getLanguageLabels();
 
-        for (String label : langLabels) {
+        for (String label : labels) {
             if (!predicate.test(label)) {
                     Assert.fail("Filtering by language label " + label + " failed");
             }
@@ -87,9 +93,57 @@ public class SearchPage extends AbstractGitHubPage {
 
         List<WebElement> list = driver.findElements(By.xpath(xpath));
 
-        List<String> stringList = convertToStrings(list);
-        return stringList;
+        return convertToStringList(list);
     }
+
+    public List<Double> getStarRatings() {
+
+        String xpath = "//div[contains(@class, 'repo-list')]//a[contains(@class, 'muted-link')]";
+
+        List<WebElement> list = driver.findElements(By.xpath(xpath));
+
+        return convertToDoubleList(list);
+    }
+
+    public static <T extends Comparable> boolean isSorted(List<T> list){
+        boolean isSorted = Ordering.natural().reverse().isOrdered(list);
+        return isSorted;
+    }
+
+    public int getRepoCountFor(LanguagePanel language){
+        String repoCountXpath = FILTER_ITEM +
+                " and text()[normalize-space() = '" + language + "']]//span";
+        String repoCount = driver.findElement(By.xpath(repoCountXpath)).getText();
+
+        return stringToNumber(repoCount);
+    }
+
+    public int getTotalRepoCount(){
+        String totalRepoXpath = "//h3[contains(text(),'repository results')]";
+        String repoCount = driver.findElement(By.xpath(totalRepoXpath)).getText();
+
+        return stringToNumber(repoCount);
+    }
+
+    public SearchPage sortBy(SearchOptions option){
+
+        sortByBtn.click();
+
+        String optionText = "//span[contains(@class, 'select-menu-item-text')" +
+                "  and text()[normalize-space() = '" + option + "']]";
+
+
+        driver.findElement(By.xpath(optionText)).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, WAIT_SECONDS);
+
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.className("repo-list")));
+
+        return this;
+    }
+
+
 
 
     // TODO: Implement table checking on this page (prefixes link)
