@@ -9,6 +9,8 @@ import java.util.List;
 
 public class CSVProvider {
 
+    // alternatively the method can return Iterator<Object[]>
+    // The @DataProvider must also be marked as returning the same
     public static String[][] getCSVData(String fileName){
         List<Object[]> rows = new ArrayList<>();
         String userDir = System.getProperty("user.dir");
@@ -23,6 +25,7 @@ public class CSVProvider {
             e.printStackTrace();
         }
 
+        // Then this must be rows.iterator();
         return rows.toArray(new String[rows.size()][]);
     }
 }
