@@ -6,6 +6,7 @@ import com.github.pages.searchpage.SearchPage;
 import com.github.pages.searchpage.SortOptions;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -73,6 +74,11 @@ public class SearchPageTest {
 
         Assert.assertTrue(isSorted(ratingList));
 
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.close();
     }
 
 }
