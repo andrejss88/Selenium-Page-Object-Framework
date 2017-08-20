@@ -2,7 +2,7 @@ package com.github.dataproviders;
 
 import org.testng.annotations.DataProvider;
 
-import static com.github.dataproviders.CSVProvider.getCSVData;
+import static com.fluentselenium.dataproviders.CSVProvider.getCSVData;
 
 public class UserDetailsProvider {
 

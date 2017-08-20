@@ -1,24 +1,19 @@
 package com.github.tests;
 
-import com.fluentselenium.setup.SeleniumDriver;
 import com.github.pages.SignInPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.fluentselenium.utils.ElementUtil.checkElementEnabled;
 
 
-public class SignInPageTest {
+public class SignInPageTest extends AbstractPageTest {
 
-    WebDriver driver;
     SignInPage signInPage;
 
     @BeforeMethod
     public void setup() {
-        driver = SeleniumDriver.getDriver();
         signInPage = new SignInPage(driver, SignInPage.PAGE_URL);
     }
 
@@ -42,9 +37,4 @@ public class SignInPageTest {
         checkElementEnabled(signInPage.getSignInBtn(), true);
     }
 
-
-    @AfterMethod
-    public void tearDown() {
-        driver.close();
-    }
 }

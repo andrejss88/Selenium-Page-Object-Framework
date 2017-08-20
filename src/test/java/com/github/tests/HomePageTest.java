@@ -1,28 +1,25 @@
 package com.github.tests;
 
-import com.fluentselenium.setup.SeleniumDriver;
 import com.github.pages.HomePage;
 import com.github.pages.SignInPage;
 import com.github.pages.SignUpPage;
 import com.github.pages.common.CommonActions;
 import com.github.pages.common.CommonHeaderElements;
 import com.github.pages.searchpage.SearchPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class HomePageTest {
+public class HomePageTest extends AbstractPageTest {
 
-    WebDriver driver;
     CommonHeaderElements header;
     HomePage home;
 
     @BeforeMethod
     public void setup() {
-        driver = SeleniumDriver.getDriver();
+
         header = new CommonHeaderElements(driver);
 
         home = new HomePage(driver, HomePage.PAGE_URL);
