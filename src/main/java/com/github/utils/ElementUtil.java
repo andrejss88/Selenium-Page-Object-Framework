@@ -1,4 +1,4 @@
-package com.fluentselenium.utils;
+package com.github.utils;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;

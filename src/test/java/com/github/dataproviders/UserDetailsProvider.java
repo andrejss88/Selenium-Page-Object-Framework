@@ -2,11 +2,11 @@ package com.github.dataproviders;
 
 import org.testng.annotations.DataProvider;
 
-import static com.fluentselenium.dataproviders.CSVProvider.getCSVData;
+import static com.github.dataproviders.CSVProvider.getCSVData;
 
 public class UserDetailsProvider {
 
-    @DataProvider(name = "dummyUserDetails")
+    @DataProvider
     public static Object[][] getUserDetails() {
         return new Object[][]{
                 {"user1", "email1", "pass1"},
@@ -14,7 +14,7 @@ public class UserDetailsProvider {
         };
     }
 
-    @DataProvider(name="loginData")
+    @DataProvider
     public static Object[][] loginData() {
         return getCSVData("loginDetails.csv");
     }

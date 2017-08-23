@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import static com.fluentselenium.utils.ElementUtil.checkElementIsDisplayed;
+import static com.github.utils.ElementUtil.checkElementIsDisplayed;
 
 public class SignUpPage extends AbstractGitHubPage{
 

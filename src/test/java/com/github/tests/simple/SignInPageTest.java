@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.fluentselenium.utils.ElementUtil.checkElementEnabled;
+import static com.github.utils.ElementUtil.checkElementEnabled;
 
 
 public class SignInPageTest extends AbstractPageTest {

@@ -15,7 +15,7 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static com.fluentselenium.utils.ConvertUtil.*;
+import static com.github.utils.ConvertUtil.*;
 
 public class SearchPage extends AbstractGitHubPage {
 

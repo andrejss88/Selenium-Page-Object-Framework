@@ -1,4 +1,4 @@
-package com.fluentselenium.dataproviders;
+package com.github.dataproviders;
 
 import com.opencsv.CSVReader;
 

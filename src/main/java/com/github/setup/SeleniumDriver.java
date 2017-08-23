@@ -1,4 +1,4 @@
-package com.fluentselenium.setup;
+package com.github.setup;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
