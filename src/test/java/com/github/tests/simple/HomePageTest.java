@@ -1,4 +1,4 @@
-package com.github.tests;
+package com.github.tests.simple;
 
 import com.github.pages.HomePage;
 import com.github.pages.SignInPage;
@@ -6,6 +6,7 @@ import com.github.pages.SignUpPage;
 import com.github.pages.common.CommonActions;
 import com.github.pages.common.CommonHeaderElements;
 import com.github.pages.searchpage.SearchPage;
+import com.github.tests.AbstractPageTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -85,24 +86,6 @@ public class HomePageTest extends AbstractPageTest {
 
         // Will display the same fail assert message 3 times, separated by comma
         soft.assertAll();
-    }
-
-    @Test
-    // Alternative way to method fillInNewUserDetails
-    public void signIn_fails_using_BuilderPattern() {
-
-        // Arrange
-        SignUpPage signUpPage = new SignUpPage(driver);
-
-        // Act
-        home.enterUserName("user")
-                .enterEmail("some@email.com")
-                .enterPassword("password")
-                .clickSignUp();
-
-        // Assert
-        Assert.assertTrue(signUpPage.isPageOpened(), "Could not assert Sign Up Page opened");
-
     }
 
     @AfterMethod

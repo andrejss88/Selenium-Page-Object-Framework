@@ -49,8 +49,13 @@ public class SearchPage extends AbstractGitHubPage {
         PageFactory.initElements(driver, this);
     }
 
-       public SearchPage enterSearchWord(String keyWord) {
+    public SearchPage enterSearchWord(String keyWord) {
         searchInput.sendKeys(keyWord);
+        return this;
+    }
+
+    public SearchPage enterSearchWord(Language language) {
+        searchInput.sendKeys(language.toString());
         return this;
     }
 

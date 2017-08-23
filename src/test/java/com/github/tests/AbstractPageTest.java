@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class AbstractPageTest {
 
-    WebDriver driver;
+    public WebDriver driver;
 
     @BeforeMethod
     public void setUp() {

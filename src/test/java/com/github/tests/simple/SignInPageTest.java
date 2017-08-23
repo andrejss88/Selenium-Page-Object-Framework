@@ -1,6 +1,7 @@
-package com.github.tests;
+package com.github.tests.simple;
 
 import com.github.pages.SignInPage;
+import com.github.tests.AbstractPageTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

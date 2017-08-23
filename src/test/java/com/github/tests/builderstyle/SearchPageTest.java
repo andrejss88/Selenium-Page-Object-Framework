@@ -1,7 +1,8 @@
-package com.github.tests;
+package com.github.tests.builderstyle;
 
 import com.github.pages.searchpage.Language;
 import com.github.pages.searchpage.SearchPage;
+import com.github.tests.AbstractPageTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -31,12 +32,15 @@ public class SearchPageTest extends AbstractPageTest {
 
         Language java = Language.JAVA;
 
-        search.enterSearchWord(java.toString())
+        search.enterSearchWord(java)
                 .clickSearch()
                 .selectLanguage(java)
                 .checkLanguageLabels(is(java));
+    }
 
-        // Negative test
+    @Test
+    public void checkLanguageFilterWorksNegativeTest(){
+
         Language html = Language.HTML;
         Language python = Language.PYTHON;
 
@@ -49,7 +53,7 @@ public class SearchPageTest extends AbstractPageTest {
 
         Language js = Language.JAVASCRIPT;
 
-        search.enterSearchWord(js.toString())
+        search.enterSearchWord(js)
                 .clickSearch();
 
         int repoCount = search.getRepoCountFor(js);
@@ -74,5 +78,4 @@ public class SearchPageTest extends AbstractPageTest {
         Assert.assertTrue(isSorted(ratingList));
 
     }
-
 }

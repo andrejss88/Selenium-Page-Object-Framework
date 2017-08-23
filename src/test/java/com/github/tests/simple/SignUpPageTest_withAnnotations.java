@@ -1,8 +1,9 @@
-package com.github.tests;
+package com.github.tests.simple;
 
 import com.github.dataproviders.UserDetailsProvider;
 import com.github.pages.SignUpPage;
 import com.github.pages.common.CommonActions;
+import com.github.tests.AbstractPageTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
