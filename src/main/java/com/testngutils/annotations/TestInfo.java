@@ -17,7 +17,7 @@ public @interface TestInfo {
         FUNCTIONAL, LOAD, SMOKE
     }
 
-    TestType testType();
+    TestType testType();    // Unless default is provided, a field is mandatory when using @TestInfo
 
     Priority priority() default Priority.MEDIUM;
 

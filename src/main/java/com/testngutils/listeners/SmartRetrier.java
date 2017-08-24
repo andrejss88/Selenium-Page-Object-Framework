@@ -6,7 +6,10 @@ import org.testng.annotations.ITestAnnotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-public class SmartRetryer implements IAnnotationTransformer {
+/**
+ * A more complex solution to flaky tests: dynamically set the RetryAnalyzer {@link Retry}
+ */
+public class SmartRetrier implements IAnnotationTransformer {
 
     @Override
     public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {

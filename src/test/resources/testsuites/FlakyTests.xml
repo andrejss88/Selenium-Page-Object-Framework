@@ -4,12 +4,12 @@
 <suite name="Suite1" verbose="1" >
     <listeners>
         <listener class-name="com.testngutils.listeners.SimpleRetrier" />
-        <listener class-name="com.testngutils.listeners.SmartRetryer" />
+        <listener class-name="com.testngutils.listeners.SmartRetrier" />
     </listeners>
 
     <test name="Regression1">
         <classes>
-            <class name="com.testngutils.ExperimentalZone" />
+            <class name="com.testngutils.FlakyTests" />
         </classes>
     </test>
 </suite>
