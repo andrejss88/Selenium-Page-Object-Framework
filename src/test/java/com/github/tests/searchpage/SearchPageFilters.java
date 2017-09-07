@@ -1,31 +1,18 @@
-package com.github.tests.builderstyle;
+package com.github.tests.searchpage;
 
 import com.github.pages.searchpage.Language;
-import com.github.pages.searchpage.SearchPage;
-import com.github.tests.AbstractPageTest;
+import com.github.tests.abstractpagetest.AbstractSearchPageTest;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static com.github.pages.searchpage.FilterPredicates.is;
 import static com.github.pages.searchpage.FilterPredicates.isNot;
-import static com.github.pages.searchpage.SearchPage.isSorted;
-import static com.github.pages.searchpage.SortOptions.MOST_STARS;
 
 /**
  * Tests here use a different design method: a simple Fluent Interface,
  * where methods are chained together to form a readable sequence of actions
  */
-public class SearchPageTest extends AbstractPageTest {
-
-    SearchPage search;
-
-    @BeforeMethod
-    public void setup() {
-        search = new SearchPage(driver, SearchPage.PAGE_URL);
-    }
+public class SearchPageFilters extends AbstractSearchPageTest {
 
     @Test
     public void checkLanguageFilterWorks() {
@@ -44,7 +31,9 @@ public class SearchPageTest extends AbstractPageTest {
         Language html = Language.HTML;
         Language python = Language.PYTHON;
 
-        search.selectLanguage(html)
+        search.enterSearchWord(html)
+                .clickSearch()
+                .selectLanguage(html)
                 .checkLanguageLabels(isNot(python));
     }
 
@@ -67,15 +56,4 @@ public class SearchPageTest extends AbstractPageTest {
         Assert.assertEquals(repoCount, totalCount);
     }
 
-    @Test
-    public void checkSortBy(){
-
-        List<Double> ratingList = search.enterSearchWord("Java")
-                .clickSearch()
-                .sortBy(MOST_STARS)
-                .getStarRatings();
-
-        Assert.assertTrue(isSorted(ratingList));
-
-    }
 }

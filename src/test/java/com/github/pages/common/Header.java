@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class CommonHeaderElements  {
+public class Header  {
     private WebDriver driver ;
     /**
      * Common header elements found on various pages
@@ -30,7 +30,7 @@ public class CommonHeaderElements  {
     private WebElement logoIcon;
 
 
-    public CommonHeaderElements(WebDriver driver) {
+    public Header(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

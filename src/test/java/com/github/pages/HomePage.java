@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends AbstractGitHubPage {
 
-    public static String PAGE_URL = BASE_URL ;
+    private static String PAGE_URL = BASE_URL ;
 
     //Locators unique to Homepage
     @FindBy(how = How.CLASS_NAME, using = "display-heading-1")
@@ -27,25 +27,36 @@ public class HomePage extends AbstractGitHubPage {
     @FindBy(name = "user[password]")
     private WebElement passwordField;
 
-    /**
-     * Instantiate for the purpose of initializing page's elements
-     * i.e. when you come from a different page
-     */
-
-    public HomePage(WebDriver driver) {
+    private HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    /**
-     * Instantiate when you want to start the test from this page
-     * @param pageUrl : use the PAGE_URL of this class
-     */
-    public HomePage(WebDriver driver, String pageUrl) {
+    private HomePage(WebDriver driver, String pageUrl) {
         this(driver);
         driver.get(pageUrl);
         PageFactory.initElements(driver, this);
         Assert.assertTrue("Could not assert Home Page opened", this.isPageOpened());
+    }
+
+    /**
+     * Use to just be able to operate on Page elements
+     * @param driver
+     * @return
+     */
+
+    public static HomePage initPageElements(WebDriver driver){
+        return new HomePage(driver);
+    }
+
+    /**
+     * Opens the page in a new Browser window
+     * @param driver
+     * @return
+     */
+
+    public static HomePage openPage(WebDriver driver){
+        return new HomePage(driver, PAGE_URL);
     }
 
     public void clickSignUp() {
