@@ -1,21 +1,21 @@
-package com.github.tests.abstractpagetest;
+package com.github.tests;
 
 import com.github.setup.SeleniumDriver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public abstract class AbstractPageTest {
+public class AbstractPageTest {
 
-    protected WebDriver driver;
+    public WebDriver driver;
 
     @BeforeMethod
-    public void globalSetUp() {
+    public void setUp() {
         driver = SeleniumDriver.getDriver();
     }
 
     @AfterMethod
-    public void globalTearDown() {
+    public void tearDown() {
         driver.close();
     }
 

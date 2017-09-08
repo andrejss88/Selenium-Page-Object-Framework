@@ -19,7 +19,7 @@ import static com.github.utils.ConvertUtil.*;
 
 public class SearchPage extends AbstractGitHubPage {
 
-    private static String PAGE_URL = BASE_URL + "search";
+    public static String PAGE_URL = BASE_URL + "search";
 
     private static final String FILTER_ITEM = "//a[contains(@class, 'filter-item')";
     private static final int WAIT_SECONDS = 5;
@@ -38,23 +38,15 @@ public class SearchPage extends AbstractGitHubPage {
 
 
 
-    private SearchPage(WebDriver driver) {
+    public SearchPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    private SearchPage(WebDriver driver, String pageUrl){
+    public SearchPage(WebDriver driver, String pageUrl){
         this(driver);
         driver.get(pageUrl);
         PageFactory.initElements(driver, this);
-    }
-
-    public static SearchPage initPageElements(WebDriver driver){
-        return new SearchPage(driver);
-    }
-
-    public static SearchPage openPage(WebDriver driver){
-        return new SearchPage(driver, PAGE_URL);
     }
 
     public SearchPage enterSearchWord(String keyWord) {

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 
-public class Footer extends AbstractGitHubPage {
+public class CommonFooterElements extends AbstractGitHubPage {
 
     /**
      * Implement footer elements (links) the same way CommonHeaderElements is.

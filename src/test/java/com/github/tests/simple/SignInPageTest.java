@@ -1,13 +1,22 @@
-package com.github.tests.signingpage;
+package com.github.tests.simple;
 
-import com.github.tests.abstractpagetest.AbstractSignInPageTest;
+import com.github.pages.SignInPage;
+import com.github.tests.AbstractPageTest;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.github.utils.ElementUtil.checkElementEnabled;
 
 
-public class SignInPageTest extends AbstractSignInPageTest {
+public class SignInPageTest extends AbstractPageTest {
+
+    SignInPage signInPage;
+
+    @BeforeMethod
+    public void setup() {
+        signInPage = new SignInPage(driver, SignInPage.PAGE_URL);
+    }
 
     /**
      * Sign in button is actually always enabled,

@@ -8,13 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage extends AbstractGitHubPage{
 
-    private static String PAGE_URL = BASE_URL + "login";
+    public static String PAGE_URL = BASE_URL + "login";
     public static String HEADING = "Sign in to GitHub";
 
     @FindBy(name = "commit")
     private WebElement signInBtn;
 
-    private SignInPage(WebDriver driver) {
+    public SignInPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -23,19 +23,11 @@ public class SignInPage extends AbstractGitHubPage{
      * Instantiate when you want to start the test from this page
      * @param pageUrl : use the PAGE_URL of this class
      */
-    private SignInPage(WebDriver driver, String pageUrl){
+    public SignInPage(WebDriver driver, String pageUrl){
         this(driver);
         driver.get(pageUrl);
         PageFactory.initElements(driver, this);
         Assert.assertTrue("Could not assert Sign In Page was opened", this.isPageOpened());
-    }
-
-    public static SignInPage initPageElements(WebDriver driver){
-        return new SignInPage(driver);
-    }
-
-    public static SignInPage openPage(WebDriver driver){
-        return new SignInPage(driver, PAGE_URL);
     }
 
     public WebElement getSignInBtn() {

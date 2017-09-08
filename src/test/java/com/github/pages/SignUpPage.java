@@ -11,7 +11,7 @@ import static com.github.utils.ElementUtil.checkElementIsDisplayed;
 
 public class SignUpPage extends AbstractGitHubPage{
 
-    private static final String PAGE_URL = BASE_URL + "join";
+    public static String PAGE_URL = BASE_URL + "join";
 
     @FindBy(className = "flash-error")
     private WebElement errorToolTip;
@@ -20,23 +20,15 @@ public class SignUpPage extends AbstractGitHubPage{
     private WebElement createAccountBtn;
 
 
-    private SignUpPage(WebDriver driver) {
+    public SignUpPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    private SignUpPage(WebDriver driver, String pageUrl) {
+    public SignUpPage(WebDriver driver, String pageUrl) {
         this(driver);
         driver.get(pageUrl);
         PageFactory.initElements(driver, this);
-    }
-
-    public static SignUpPage initPageElements(WebDriver driver){
-        return new SignUpPage(driver);
-    }
-
-    public static SignUpPage openPage(WebDriver driver){
-        return new SignUpPage(driver, PAGE_URL);
     }
 
     public void softCheckSignUpFailed() {
